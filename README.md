@@ -1,4 +1,4 @@
-# Hospital API [Hosted Link!](https://hospital-api-kdpb.onrender.com/)
+# Hospital API
 
 This is an easy-to-use API designed for hospitals to manage health records of COVID-19 patients. It allows doctors and hospital staff to register, log in, register patients, and create reports for each visit. The API also provides features to retrieve a patient's records and filter reports by status.
 
@@ -9,7 +9,7 @@ Overall, this API simplifies the process of managing COVID-19 patient records fo
 ## Installation
 
 To install and run the application, follow the steps below:
-1. Clone the repository - `git clone https://github.com/kapishverma/hospital_API.git`
+1. Clone the repository - `git clone https://github.com/gitxprashant/HospitalAPI.git`
 2. Navigate to the project directory
 3. Install the dependencies - `npm install` or `npm i`
 4. Start the server: `npm start`
@@ -26,59 +26,6 @@ CN Hospital API requires the following dependencies:
 -   `passport` - Authentication middleware for Node.js
 -   `passport-jwt` - Passport strategy for authenticating with a JSON Web Token (JWT)
 -   `nodemon` - IT automatically restarts node application when it detects any changes.
-## API Routes
-
-### Doctor
-
--   **POST** `https://hospital-api-kdpb.onrender.com/doctors/register` - Register a new doctor with a username and password.
-```javascript
-{
-    "name":"doctor_1",
-    "username":"doctor_1",
-    "password":"1"
-}
-```
--   **POST** `https://hospital-api-kdpb.onrender.com/doctors/login` - Login with a username and password to receive a JWT.
-```javascript
-{
-     "username":"doctor_1",
-     "password":"1"
-}
-```
-
-    > Note: All routes except for `/doctors/register` and `/doctors/login` require a valid JWT to be included in the Authorization header of the request. The JWT should have the format `Bearer <token>`.
-
-### Patients
-
--   **POST** `https://hospital-api-kdpb.onrender.com/patients/register` - Register a new patient with a phone number. If the patient already exists, the existing patient info is returned.
-
-```javascript
-{
- "phone" : "123456789",
-  "name" : "patient_1",
-   "age" : "21",
-"gender" : "M"
-}
-```
--   **POST** `https://hospital-api-kdpb.onrender.com/patients/:id/create_report` - Create a new report for the patient with the given id, which includes the status and the date. The report is created by the doctor who is currently authenticated.
-
-```javascript
- {
- "doctor" : "6479b22e07def9521c1526d3",
-     "id" : "6479be2f04770c1d8fd14fd7", 
- "status" : "Travelled-Quarantine"
-}
-```
-
--   **GET** `https://hospital-api-kdpb.onrender.com/patients/:id/all_reports` - List all the reports for the patient with the given id, sorted from oldest to newest.
-
->   **example :** localhost:7200/patients/6479be2f04770c1d8fd14fd7/all_reports
-
-### Reports
-
--   **GET** `https://hospital-api-kdpb.onrender.com/reports/:status` - List all the reports for all patients with the given status. The reports are sorted from oldest to newest.
->   **example :** localhost:7200/reports/Travelled-Quarantine 
-
 
 ## Schemas
 - Doctor Schema
